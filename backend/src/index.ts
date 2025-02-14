@@ -20,6 +20,4 @@ app.get("/", (req, res) => {
       res.send("SIMPLE TASK API WORKS!");
 })
 
-app.listen(PORT, () => {
-      console.log(`Server running on port http://localhost:${PORT}`);
-})
+export default app;
