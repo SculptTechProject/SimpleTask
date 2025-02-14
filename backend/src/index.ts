@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-app.post("/api/v1/auth", authRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 app.get("/", (req, res) => {
       res.send("SIMPLE TASK API WORKS!");
