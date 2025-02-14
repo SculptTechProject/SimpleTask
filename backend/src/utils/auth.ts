@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import { generateToken } from "../controllers/authController";
 
 const prisma = new PrismaClient();
 
@@ -55,7 +56,11 @@ export const loginAuth = async (req: Request, res: Response) => {
       return res.status(401).json({ error: "Invalid password!" });
     }
 
-    res.status(200).json({ message: "Login successful!" });
+    const token = generateToken(user.id);
+
+    res
+      .status(200)
+      .json({ message: "Login successful!", token, userId: user.id });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
