@@ -15,3 +15,17 @@ export const registerUser = (email: string, password: string) => {
 export const loginUser = (email: string, password: string) => {
   return API.post<LoginResponse>("/auth/login", { email, password });
 };
+
+// Task endpoints
+
+export const createTask = (data: { title: string; description?: string; userId: string }) => {
+  return API.post("/tasks", data);
+};
+
+export const updateTask = (id: string, data: { title?: string; description?: string }) => {
+  return API.put(`/tasks/${id}`, data);
+};
+
+export const deleteTask = (id: string) => {
+  return API.delete(`/tasks/${id}`);
+};

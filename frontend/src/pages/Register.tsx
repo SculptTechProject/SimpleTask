@@ -44,6 +44,19 @@ export const Register = () => {
         </div>
       ) : (
         <>
+          <div className="relative group">
+            <Link
+              to="/"
+              className="text-sm text-gray-500 transition-all hover:text-3xl hover:text-gray-700"
+            >
+              Go back to home?
+            </Link>
+            <img
+              src="catBed.gif"
+              alt="Hover GIF"
+              className="absolute h-auto mt-2 transition-opacity duration-300 transform -translate-x-1/2 shadow-md opacity-0 bottom-full left-1/2 group-hover:opacity-100 hover:rotate-180 rounded-xl"
+            />
+          </div>
           <header className="text-2xl font-bold text-gray-500">Register</header>
           <main>
             {error && <div className="text-red-500">{error}</div>}
@@ -54,7 +67,7 @@ export const Register = () => {
               <input
                 type="text"
                 id="email"
-                className="mb-4 text-gray-700 border rounded-md"
+                className="mb-4 text-gray-700 transition-all border rounded-md hover:px-5 hover:py-2"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -64,14 +77,14 @@ export const Register = () => {
               <input
                 type="password"
                 id="password"
-                className="mb-4 text-gray-700 border rounded-md"
+                className="mb-4 text-gray-700 transition-all border rounded-md hover:px-5 hover:py-2"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="px-4 py-2 font-bold text-white transition-all bg-orange-400 border rounded-lg hover:text-orange-200 hover:bg-sky-500"
+                className="px-4 py-2 font-bold text-white transition-all bg-orange-400 border rounded-lg hover:text-orange-200 hover:bg-sky-500 hover:px-6 hover:py-4"
               >
                 {loading ? "Registering..." : "Register"}
               </button>
@@ -80,14 +93,28 @@ export const Register = () => {
               <img
                 src="/catMoney.gif"
                 alt="Funny cat GIF"
-                className="w-64 rounded-lg shadow-lg"
+                className="w-64 transition-all rounded-lg shadow-lg hover:px-5 hover:py-5 hover:w-96"
               />
             </div>
             <div className="text-center">
-              <p>Already have an account?</p>
+              <p>
+                Already have an account?{" "}
+                <span className="transition-all hover:font-bold hover:text-red-600 hover:text-2xl">
+                  What
+                </span>{" "}
+                <span className="transition-all hover:text-red-600 hover:font-bold hover:text-3xl">
+                  u
+                </span>{" "}
+                <span className="transition-all hover:text-green-600 hover:font-bold hover:text-4xl">
+                  doin
+                </span>{" "}
+                <span className="transition-all hover:text-red-600 hover:font-bold hover:text-3xl">
+                  here?
+                </span>
+              </p>
               <Link
                 to="/login"
-                className="transition-all hover:outline-teal-600 hover:py-1 hover:px-12 hover:bg-emerald-200 hover:text-slate-500"
+                className="transition-all hover:outline-gray-600 hover:py-1 hover:px-20 hover:bg-emerald-200 hover:text-slate-500 shadow=lg hover:text-xl"
               >
                 Login!
               </Link>

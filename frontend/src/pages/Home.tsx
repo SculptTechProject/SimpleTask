@@ -38,7 +38,7 @@ export const Home = () => {
       </header>
       <main>
         <h2 className="justify-center text-center align-middle text-md text-emerald-800">
-          I wish i could say more about this project?
+          I wish i could say more about this <span className="transition-all hover:text-2xl hover:font-extrabold hover:text-red-600">project?</span>
         </h2>
         <p className="justify-center pt-8 text-center align-middle text-md text-emerald-800">
           me rn:
@@ -47,7 +47,7 @@ export const Home = () => {
           <img
             src="/catTyping.gif"
             alt="Funny cat GIF"
-            className="w-64 rounded-lg shadow-lg"
+            className="w-64 transition-all rounded-lg shadow-lg hover:w-72"
           />
         </div>
       </main>
