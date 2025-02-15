@@ -10,8 +10,8 @@ interface LoginFamilyResponse {
 
 const API = axios.create({
   baseURL:
-    process.env.NODE_ENV === "production"
-      ? process.env.VITE_APP_API_URL
+    import.meta.env.NODE_ENV === "production"
+      ? import.meta.env.VITE_APP_API_URL
       : "http://localhost:3000/api/v1",
 });
 
