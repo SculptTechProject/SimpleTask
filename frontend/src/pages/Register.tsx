@@ -20,19 +20,34 @@ export const Register = () => {
     setLoading(true);
     setError("");
 
+    // Sprawdzenie, czy email i hasło są podane
+    if (!email.trim() || !password.trim()) {
+      setError("Email and password are required!");
+      setLoading(false);
+      return;
+    }
+
     try {
+      console.log("Wysyłanie danych:", { email, password });
+
       const response = await registerUser(email, password);
+      console.log("Odpowiedź serwera:", response.data);
+
       const data = response.data as RegisterResponse;
 
       if (data.token) {
         localStorage.setItem("token", data.token);
+        navigate("/dashboard");
       }
-    } catch (error) {
-      console.error("Registration failed:", error);
-      setError("Registration failed, please try again.");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      console.error("Błąd rejestracji:", error.response?.data || error.message);
+
+      setError(
+        error.response?.data?.error || "Registration failed, please try again."
+      );
     } finally {
       setLoading(false);
-      navigate("/dashboard");
     }
   };
 
