@@ -74,7 +74,7 @@ export const Register = () => {
           </div>
           <header className="text-2xl font-bold text-gray-500">Register</header>
           <main>
-            {error && <div className="text-red-500">{error}</div>}
+            {error && <div className="text-center text-red-500">{error}</div>}
             <form className="flex flex-col pb-4" onSubmit={handleSubmit}>
               <label htmlFor="email" className="text-gray-500">
                 Email

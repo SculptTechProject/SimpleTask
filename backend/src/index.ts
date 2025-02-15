@@ -10,7 +10,7 @@ const app = express();
 
 const corsOptions = {
   origin: ["https://simple-task-ten.vercel.app"], 
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: [
     "Origin",
     "X-Requested-With",
@@ -18,7 +18,7 @@ const corsOptions = {
     "Accept",
     "Authorization",
   ],
-  credentials: true, 
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
