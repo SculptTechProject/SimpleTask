@@ -37,7 +37,6 @@ export const Register = () => {
 
       if (data.token) {
         localStorage.setItem("token", data.token);
-        navigate("/login");
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
@@ -48,6 +47,7 @@ export const Register = () => {
       );
     } finally {
       setLoading(false);
+      navigate("/login");
     }
   };
 
