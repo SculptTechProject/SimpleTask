@@ -39,12 +39,5 @@ app.get("/", (req, res) => {
   res.send("SIMPLE TASK API WORKS!");
 });
 
-const PORT = process.env.PORT || 3000;
-if (env !== "production") {
-  app.listen(PORT, () => {
-    console.log(`Serwer działa na porcie http://localhost:${PORT}`);
-  });
-}
-
 
 export default app;
