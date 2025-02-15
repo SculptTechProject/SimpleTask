@@ -95,28 +95,30 @@ export const Home = () => {
                 className="w-64 transition-all rounded-lg shadow-lg hover:w-72"
               />
             </div>
-            <div className="pt-8">
-              <div className="font-bold text-center text-red-500">{error}</div>
-              <form onSubmit={handleSubmit}>
-                <label
-                  htmlFor="code"
-                  className="pr-2 text-gray-500 hover:text-xl text-md"
-                >
-                  Code:{" "}
+            <div className="flex flex-col items-center justify-center w-full pt-8">
+              <div className="mb-4 font-bold text-center text-red-500">
+                {error}
+              </div>
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col w-full max-w-xs"
+              >
+                <label htmlFor="code" className="mb-1 text-gray-500 transition-all text-md hover:text-xl hover:text-orange-400">
+                  Code:
                 </label>
                 <input
                   type="text"
                   id="code"
-                  className="mb-4 text-gray-700 transition-all border rounded-md hover:px-5 hover:py-2"
+                  className="px-3 py-2 mb-4 text-gray-700 transition-all border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 hover:px-5 hover:py-4"
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
                 />
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-4 py-2 ml-2 font-bold text-white transition-all bg-orange-400 border rounded-lg hover:text-orange-200 hover:bg-sky-500 hover:px-6 hover:py-4"
+                  className="px-4 py-2 font-bold text-white transition-all bg-orange-400 border rounded-lg hover:bg-sky-500 hover:px-6 hover:py-4"
                 >
-                  {loading ? "Submiting..." : "Submit"}
+                  {loading ? "Submitting..." : "Submit"}
                 </button>
               </form>
             </div>
