@@ -5,7 +5,7 @@ interface LoginResponse{
 }
 
 const API = axios.create({
-  baseURL: "http://localhost:3000/api/v1",
+  baseURL: "https://simple-task-backend.vercel.app/api/v1",
 });
 
 export const registerUser = (email: string, password: string) => {

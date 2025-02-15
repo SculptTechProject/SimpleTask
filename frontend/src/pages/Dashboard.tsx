@@ -23,7 +23,7 @@ export const Dashboard = () => {
   const fetchTasks = async (userId: string | null, token: string | null) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/v1/tasks?userId=${userId}`,
+        `https://simple-task-backend.vercel.app/api/v1/tasks?userId=${userId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -58,7 +58,7 @@ export const Dashboard = () => {
     }
     try {
       await axios.post(
-        "http://localhost:3000/api/v1/tasks",
+        "https://simple-task-backend.vercel.app/api/v1/tasks",
         { title, description, userId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -78,9 +78,12 @@ export const Dashboard = () => {
       userId = decoded.userId;
     }
     try {
-      await axios.delete(`http://localhost:3000/api/v1/tasks/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://simple-task-backend.vercel.app/api/v1/tasks/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       await fetchTasks(userId, token);
     } catch (error) {
       console.error("Błąd podczas usuwania taska", error);
@@ -99,7 +102,7 @@ export const Dashboard = () => {
     if (!newTitle) return;
     try {
       await axios.put(
-        `http://localhost:3000/api/v1/tasks/${id}`,
+        `https://simple-task-backend.vercel.app/api/v1/tasks/${id}`,
         { title: newTitle, description: newDescription },
         { headers: { Authorization: `Bearer ${token}` } }
       );
