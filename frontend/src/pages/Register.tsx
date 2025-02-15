@@ -20,7 +20,6 @@ export const Register = () => {
     setLoading(true);
     setError("");
 
-    // Sprawdzenie, czy email i hasło są podane
     if (!email.trim() || !password.trim()) {
       setError("Email and password are required!");
       setLoading(false);

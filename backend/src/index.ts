@@ -8,18 +8,25 @@ dotenv.config();
 
 const app = express();
 
-const corsOptions = {
-  origin: ["https://simple-task-ten.vercel.app"],
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: [
-    "Origin",
-    "X-Requested-With",
-    "Content-Type",
-    "Accept",
-    "Authorization",
-  ],
-  credentials: true,
-};
+const env = process.env.NODE_ENV || "development";
+
+const corsOptions =
+  env === "production"
+    ? {
+        origin: ["https://simple-task-ten.vercel.app"],
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+        allowedHeaders: [
+          "Origin",
+          "X-Requested-With",
+          "Content-Type",
+          "Accept",
+          "Authorization",
+        ],
+        credentials: true,
+      }
+    : {
+        origin: "*",
+      };
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -31,5 +38,13 @@ app.use("/api/v1/tasks", tasksRoutes);
 app.get("/", (req, res) => {
   res.send("SIMPLE TASK API WORKS!");
 });
+
+const PORT = process.env.PORT || 3000;
+if (env !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Serwer działa na porcie http://localhost:${PORT}`);
+  });
+}
+
 
 export default app;

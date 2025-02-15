@@ -75,3 +75,33 @@ export const loginAuth = async (
     next(error);
   }
 };
+
+export const familyLogin = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { code } = req.body;
+    if (!code) {
+      res.status(400).json({ error: "Code is required." });
+      return;
+    }
+
+    if (code !== process.env.SECRET_CODE) {
+      res.status(401).json({ error: "Incorrect code" });
+      return;
+    }
+    
+    const familyUserId = process.env.FAMILY_ACCOUNT_ID;
+    if (!familyUserId) {
+      res.status(500).json({ error: "Family userId not existing" });
+      return
+    }
+
+    const token = generateToken(familyUserId, "family");
+    res.status(200).json({ message: "Login successful", token });
+  } catch (error) {
+    next(error);
+  }
+};

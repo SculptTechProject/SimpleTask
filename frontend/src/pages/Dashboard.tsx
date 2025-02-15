@@ -4,6 +4,13 @@ import { jwtDecode } from "jwt-decode";
 import { HashLoader } from "react-spinners";
 import { LogoutBtn } from "../components/LogoutBtn";
 
+//todo need to use components from api.ts
+
+const api_url =
+  process.env.NODE_ENV === "production"
+    ? process.env.VITE_APP_API_URL
+    : "http://localhost:3000/api/v1";
+
 interface TokenPayload {
   userId: string;
 }
@@ -22,12 +29,9 @@ export const Dashboard = () => {
 
   const fetchTasks = async (userId: string | null, token: string | null) => {
     try {
-      const response = await axios.get(
-        `https://simple-task-backend.vercel.app/api/v1/tasks?userId=${userId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await axios.get(`${api_url}/tasks?userId=${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setTasks(response.data as Task[]);
     } catch (error) {
       console.error("Błąd podczas pobierania tasków", error);
@@ -58,7 +62,7 @@ export const Dashboard = () => {
     }
     try {
       await axios.post(
-        "https://simple-task-backend.vercel.app/api/v1/tasks",
+        `${api_url}/tasks`,
         { title, description, userId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -78,12 +82,9 @@ export const Dashboard = () => {
       userId = decoded.userId;
     }
     try {
-      await axios.delete(
-        `https://simple-task-backend.vercel.app/api/v1/tasks/${id}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      await axios.delete(`${api_url}/tasks/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       await fetchTasks(userId, token);
     } catch (error) {
       console.error("Błąd podczas usuwania taska", error);
@@ -102,7 +103,7 @@ export const Dashboard = () => {
     if (!newTitle) return;
     try {
       await axios.put(
-        `https://simple-task-backend.vercel.app/api/v1/tasks/${id}`,
+        `${api_url}/tasks/${id}`,
         { title: newTitle, description: newDescription },
         { headers: { Authorization: `Bearer ${token}` } }
       );
