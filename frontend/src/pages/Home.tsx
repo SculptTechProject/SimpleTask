@@ -107,7 +107,7 @@ export const Home = () => {
                   Code:
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="code"
                   className="px-3 py-2 mb-4 text-gray-700 transition-all border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 hover:px-5 hover:py-4"
                   value={code}
