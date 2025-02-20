@@ -180,7 +180,7 @@ export const Dashboard = () => {
                       onClick={() => handleEditTask(task.id)}
                       className="px-2 py-1 text-white transition-all bg-blue-500 rounded hover:bg-blue-600 hover:px-4 hover:py-3"
                     >
-                      Edite
+                      Edit
                     </button>
                     <button
                       onClick={() => handleDeleteTask(task.id)}
